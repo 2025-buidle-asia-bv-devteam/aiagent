@@ -1,0 +1,556 @@
+{
+    "notes": {
+      "top": [
+        {
+          "name": "Bergamot",
+          "category": "citrus",
+          "vibe": ["fresh", "bright", "zesty"],
+          "intensity": "high",
+          "volatility": "high",
+          "brands": ["Creed Aventus", "Jo Malone Basil & Neroli"],
+          "variants": [
+            "Smoky Bergamot",
+            "Bergamot with Green Tea",
+            "Charcoal-Infused Citrus"
+          ],
+          "pairing_suggestions": ["Patchouli", "Rose", "Sandalwood"],
+          "description": "A tangy, uplifting citrus note that adds vibrant freshness."
+        },
+        {
+          "name": "Yuzu",
+          "category": "citrus",
+          "vibe": ["fresh", "bright", "tart"],
+          "intensity": "high",
+          "volatility": "high",
+          "brands": ["Diptyque Oyedo"],
+          "variants": ["Yuzu with Spice", "Frosted Yuzu"],
+          "pairing_suggestions": ["Jasmine", "Cedarwood"],
+          "description": "A sharp, juicy citrus with a lively, exotic twist."
+        },
+        {
+          "name": "Pink Pepper",
+          "category": "spicy",
+          "vibe": ["spicy", "modern", "vibrant"],
+          "intensity": "medium",
+          "volatility": "high",
+          "brands": ["Byredo Rose Noir"],
+          "variants": ["Pepper with Citrus Zest", "Pink Pepper Dust"],
+          "pairing_suggestions": ["Rose", "Oud"],
+          "description": "A bold, spicy note with a modern, energetic kick."
+        },
+        {
+          "name": "Lemon",
+          "category": "citrus",
+          "vibe": ["fresh", "sharp", "clean"],
+          "intensity": "high",
+          "volatility": "high",
+          "brands": ["Jo Malone Lemon & Basil"],
+          "variants": ["Smoky Lemon Veil", "Lemon with Mint"],
+          "pairing_suggestions": ["Lavender", "Musk"],
+          "description": "A crisp, zesty citrus that evokes sunshine and clarity."
+        },
+        {
+          "name": "Green Apple",
+          "category": "fruity",
+          "vibe": ["fruity", "crisp", "playful"],
+          "intensity": "medium",
+          "volatility": "high",
+          "brands": ["Dolce & Gabbana Light Blue"],
+          "variants": ["Apple with Floral Breeze", "Tart Apple Spark"],
+          "pairing_suggestions": ["Peony", "Vanilla"],
+          "description": "A juicy, crisp fruit note with a youthful, fun vibe."
+        },
+        {
+          "name": "Mandarin",
+          "category": "citrus",
+          "vibe": ["sweet", "fresh", "juicy"],
+          "intensity": "high",
+          "volatility": "high",
+          "brands": ["Guerlain Aqua Allegoria Mandarine Basilic"],
+          "variants": ["Mandarin with Saffron", "Spiced Mandarin Glow"],
+          "pairing_suggestions": ["Cardamom", "Amber"],
+          "description": "A sweet, juicy citrus with a warm, inviting charm."
+        },
+        {
+          "name": "Blackcurrant",
+          "category": "fruity",
+          "vibe": ["fruity", "tart", "bold"],
+          "intensity": "medium",
+          "volatility": "high",
+          "brands": ["Jo Malone Blackberry & Bay"],
+          "variants": ["Blackcurrant with Moss", "Tart Berry Mist"],
+          "pairing_suggestions": ["Rose", "Vetiver"],
+          "description": "A tart, bold berry note with a rich, fruity edge."
+        },
+        {
+          "name": "Sea Salt",
+          "category": "aquatic",
+          "vibe": ["marine", "clean", "crisp"],
+          "intensity": "medium",
+          "volatility": "high",
+          "brands": ["Jo Malone Wood Sage & Sea Salt"],
+          "variants": ["Salty Citrus Spray", "Sea Salt with Driftwood"],
+          "pairing_suggestions": ["Sage", "Musk"],
+          "description": "A fresh, oceanic note with a crisp, airy feel."
+        },
+        {
+          "name": "Grapefruit",
+          "category": "citrus",
+          "vibe": ["fresh", "bitter", "zesty"],
+          "intensity": "high",
+          "volatility": "high",
+          "brands": ["Chanel Chance Eau Fraîche"],
+          "variants": ["Grapefruit with Spice", "Bitter Citrus Glow"],
+          "pairing_suggestions": ["Jasmine", "Cedarwood"],
+          "description": "A bitter, zesty citrus with a bold, refreshing bite."
+        },
+        {
+          "name": "Basil",
+          "category": "herbal",
+          "vibe": ["green", "fresh", "aromatic"],
+          "intensity": "medium",
+          "volatility": "high",
+          "brands": ["Jo Malone Basil & Neroli"],
+          "variants": ["Basil with Citrus Mist", "Herbal Basil Spark"],
+          "pairing_suggestions": ["Lemon", "Musk"],
+          "description": "A green, aromatic herb with a fresh, lively character."
+        }
+      ],
+      "middle": [
+        {
+          "name": "Patchouli",
+          "category": "earthy",
+          "vibe": ["smoky", "earthy", "rich"],
+          "intensity": "medium",
+          "volatility": "medium",
+          "brands": ["Tom Ford Oud Wood", "Le Labo Patchouli 24"],
+          "variants": [
+            "Patchouli with Floral Mist",
+            "Spicy Patchouli Blend",
+            "Patchouli with Oceanic Salt"
+          ],
+          "pairing_suggestions": ["Bergamot", "Sandalwood"],
+          "description": "A smoky, musky note with deep, earthy warmth."
+        },
+        {
+          "name": "Rose",
+          "category": "floral",
+          "vibe": ["floral", "rich", "romantic"],
+          "intensity": "medium",
+          "volatility": "medium",
+          "brands": ["Maison Francis Kurkdjian Oud Satin Mood"],
+          "variants": ["Rose with Dark Resin", "Velvet Rose Petal"],
+          "pairing_suggestions": ["Oud", "Vanilla"],
+          "description": "A luxurious, romantic floral with a rich, velvety depth."
+        },
+        {
+          "name": "Jasmine",
+          "category": "floral",
+          "vibe": ["floral", "sweet", "intoxicating"],
+          "intensity": "medium",
+          "volatility": "medium",
+          "brands": ["Chanel Coco Mademoiselle"],
+          "variants": ["Jasmine with Saffron Veil", "Night-Blooming Jasmine"],
+          "pairing_suggestions": ["Yuzu", "Musk"],
+          "description": "A sweet, heady floral with an alluring, sensual charm."
+        },
+        {
+          "name": "Lavender",
+          "category": "herbal",
+          "vibe": ["floral", "calm", "aromatic"],
+          "intensity": "medium",
+          "volatility": "medium",
+          "brands": ["Guerlain Mon Guerlain"],
+          "variants": ["Smoky Lavender Haze", "Lavender with Spice"],
+          "pairing_suggestions": ["Lemon", "Sandalwood"],
+          "description": "A soothing, aromatic note with a calming, floral edge."
+        },
+        {
+          "name": "Peony",
+          "category": "floral",
+          "vibe": ["floral", "light", "delicate"],
+          "intensity": "medium",
+          "volatility": "medium",
+          "brands": ["Jo Malone Peony & Blush Suede"],
+          "variants": ["Peony with Fruity Glow", "Dewy Peony Bloom"],
+          "pairing_suggestions": ["Green Apple", "Musk"],
+          "description": "A soft, delicate floral with a fresh, feminine charm."
+        },
+        {
+          "name": "Cardamom",
+          "category": "spicy",
+          "vibe": ["spicy", "warm", "exotic"],
+          "intensity": "medium",
+          "volatility": "medium",
+          "brands": ["Byredo Black Saffron"],
+          "variants": ["Cardamom with Floral Dust", "Smoky Cardamom Veil"],
+          "pairing_suggestions": ["Mandarin", "Oud"],
+          "description": "A warm, spicy note with an exotic, aromatic allure."
+        },
+        {
+          "name": "Violet",
+          "category": "floral",
+          "vibe": ["floral", "powdery", "soft"],
+          "intensity": "medium",
+          "volatility": "medium",
+          "brands": ["Guerlain Insolence"],
+          "variants": ["Violet with Green Mist", "Powdery Violet Glow"],
+          "pairing_suggestions": ["Bergamot", "Vanilla"],
+          "description": "A soft, powdery floral with a delicate, nostalgic feel."
+        },
+        {
+          "name": "Saffron",
+          "category": "spicy",
+          "vibe": ["spicy", "rich", "exotic"],
+          "intensity": "medium",
+          "volatility": "medium",
+          "brands": ["Maison Francis Kurkdjian Baccarat Rouge 540"],
+          "variants": ["Saffron with Smoky Leather", "Embered Saffron Thread"],
+          "pairing_suggestions": ["Rose", "Amber"],
+          "description": "A rich, spicy note with a luxurious, fiery undertone."
+        },
+        {
+          "name": "Neroli",
+          "category": "floral",
+          "vibe": ["floral", "citrus", "fresh"],
+          "intensity": "medium",
+          "volatility": "medium",
+          "brands": ["Tom Ford Neroli Portofino"],
+          "variants": ["Neroli with Sea Breeze", "Spiced Neroli Bloom"],
+          "pairing_suggestions": ["Lemon", "Musk"],
+          "description": "A fresh, citrusy floral with a bright, elegant vibe."
+        },
+        {
+          "name": "Fig Leaf",
+          "category": "green",
+          "vibe": ["green", "fresh", "earthy"],
+          "intensity": "medium",
+          "volatility": "medium",
+          "brands": ["Diptyque Philosykos"],
+          "variants": ["Fig Leaf with Coconut", "Green Fig Mist"],
+          "pairing_suggestions": ["Blackcurrant", "Cedarwood"],
+          "description": "A lush, green note with a fresh, natural earthiness."
+        }
+      ],
+      "base": [
+        {
+          "name": "Sandalwood",
+          "category": "woody",
+          "vibe": ["woody", "warm", "creamy"],
+          "intensity": "low",
+          "volatility": "low",
+          "brands": ["Creed Bois du Portugal", "Diptyque Tam Dao"],
+          "variants": [
+            "Sandalwood with Oud Glow",
+            "Creamy Sandalwood with Amber",
+            "Sandalwood with Resinous Edge"
+          ],
+          "pairing_suggestions": ["Rose", "Patchouli"],
+          "description": "A smooth, creamy wood with a warm, lasting finish."
+        },
+        {
+          "name": "Amber",
+          "category": "resinous",
+          "vibe": ["dark", "warm", "resinous"],
+          "intensity": "low",
+          "volatility": "low",
+          "brands": ["Amouage Reflection Man"],
+          "variants": ["Amber with Smoky Leather", "Molten Amber Glow"],
+          "pairing_suggestions": ["Saffron", "Jasmine"],
+          "description": "A rich, resinous note with a deep, sensual warmth."
+        },
+        {
+          "name": "Oud",
+          "category": "woody",
+          "vibe": ["exotic", "rich", "dark"],
+          "intensity": "low",
+          "volatility": "low",
+          "brands": ["Tom Ford Oud Wood"],
+          "variants": ["Oud with Smoky Spice", "Velvet Oud Dusk"],
+          "pairing_suggestions": ["Rose", "Cardamom"],
+          "description": "A luxurious, resinous wood with a deep, mysterious allure."
+        },
+        {
+          "name": "Vanilla",
+          "category": "gourmand",
+          "vibe": ["sweet", "creamy", "warm"],
+          "intensity": "low",
+          "volatility": "low",
+          "brands": ["Yves Saint Laurent Libre"],
+          "variants": ["Vanilla with Toasted Spice", "Creamy Vanilla Cloud"],
+          "pairing_suggestions": ["Peony", "Sandalwood"],
+          "description": "A sweet, creamy note with a comforting, rich depth."
+        },
+        {
+          "name": "Musk",
+          "category": "animalic",
+          "vibe": ["soft", "sensual", "clean"],
+          "intensity": "low",
+          "volatility": "low",
+          "brands": ["Narciso Rodriguez For Her"],
+          "variants": ["Musk with Floral Veil", "Smoky Musk Haze"],
+          "pairing_suggestions": ["Jasmine", "Lemon"],
+          "description": "A soft, sensual note with a clean, lingering warmth."
+        },
+        {
+          "name": "Vetiver",
+          "category": "woody",
+          "vibe": ["earthy", "dry", "green"],
+          "intensity": "low",
+          "volatility": "low",
+          "brands": ["Creed Original Vetiver"],
+          "variants": ["Vetiver with Citrus Dust", "Dry Vetiver Breeze"],
+          "pairing_suggestions": ["Blackcurrant", "Lavender"],
+          "description": "A dry, earthy wood with a fresh, grassy undertone."
+        },
+        {
+          "name": "Cedarwood",
+          "category": "woody",
+          "vibe": ["woody", "dry", "warm"],
+          "intensity": "low",
+          "volatility": "low",
+          "brands": ["Diptyque Tam Dao"],
+          "variants": ["Cedarwood with Smoky Ember", "Cedar with Spice"],
+          "pairing_suggestions": ["Yuzu", "Patchouli"],
+          "description": "A warm, dry wood with a grounded, forest-like quality."
+        },
+        {
+          "name": "Tonka Bean",
+          "category": "gourmand",
+          "vibe": ["sweet", "nutty", "warm"],
+          "intensity": "low",
+          "volatility": "low",
+          "brands": ["Guerlain Spiritueuse Double Vanille"],
+          "variants": ["Tonka with Caramel Glow", "Spiced Tonka Dust"],
+          "pairing_suggestions": ["Violet", "Sandalwood"],
+          "description": "A sweet, nutty note with a cozy, almond-like warmth."
+        },
+        {
+          "name": "Ambergris",
+          "category": "animalic",
+          "vibe": ["marine", "salty", "rich"],
+          "intensity": "low",
+          "volatility": "low",
+          "brands": ["Creed Aventus"],
+          "variants": ["Ambergris with Oceanic Mist", "Salty Amber Glow"],
+          "pairing_suggestions": ["Bergamot", "Rose"],
+          "description": "A salty, marine note with a rich, animalic depth."
+        },
+        {
+          "name": "Leather",
+          "category": "animalic",
+          "vibe": ["smoky", "rich", "bold"],
+          "intensity": "low",
+          "volatility": "low",
+          "brands": ["Tom Ford Tuscan Leather"],
+          "variants": ["Leather with Spicy Saffron", "Smoky Leather Dusk"],
+          "pairing_suggestions": ["Pink Pepper", "Oud"],
+          "description": "A bold, smoky note with a luxurious, rugged charm."
+        }
+      ]
+    },
+    "styles": {
+      "smoky": {
+        "keywords": ["smoky", "charred", "bonfire", "incense"],
+        "notes": ["Patchouli", "Oud", "Leather"],
+        "description": "Evokes mystery with deep, charred, and earthy tones."
+      },
+      "dark": {
+        "keywords": ["dark", "mysterious", "brooding", "deep"],
+        "notes": ["Amber", "Oud", "Sandalwood"],
+        "description": "Rich, sensual scents with a warm, enveloping character."
+      },
+      "fresh": {
+        "keywords": ["fresh", "clean", "crisp", "airy"],
+        "notes": ["Bergamot", "Yuzu", "Lemon"],
+        "description": "Light, vibrant scents with an uplifting, airy feel."
+      },
+      "woody": {
+        "keywords": ["woody", "earthy", "dry", "forest"],
+        "notes": ["Sandalwood", "Cedarwood", "Vetiver"],
+        "description": "Grounded, natural scents with a warm, wooded quality."
+      },
+      "floral": {
+        "keywords": ["floral", "romantic", "sweet", "delicate"],
+        "notes": ["Rose", "Jasmine", "Peony"],
+        "description": "Soft, blooming scents with a feminine, elegant charm."
+      },
+      "spicy": {
+        "keywords": ["spicy", "warm", "bold", "exotic"],
+        "notes": ["Cardamom", "Saffron", "Pink Pepper"],
+        "description": "Fiery, aromatic scents with a vibrant, exotic edge."
+      },
+      "gourmand": {
+        "keywords": ["sweet", "creamy", "edible", "cozy"],
+        "notes": ["Vanilla", "Tonka Bean"],
+        "description": "Rich, dessert-like scents with a comforting warmth."
+      },
+      "aquatic": {
+        "keywords": ["marine", "ozonic", "clean", "breezy"],
+        "notes": ["Sea Salt", "Ambergris"],
+        "description": "Fresh, oceanic scents with a crisp, watery feel."
+      },
+      "fruity": {
+        "keywords": ["fruity", "juicy", "playful", "sweet"],
+        "notes": ["Green Apple", "Blackcurrant", "Mandarin"],
+        "description": "Vibrant, juicy scents with a youthful, fun vibe."
+      },
+      "herbal": {
+        "keywords": ["green", "aromatic", "fresh", "natural"],
+        "notes": ["Basil", "Lavender", "Fig Leaf"],
+        "description": "Clean, green scents with a natural, earthy aroma."
+      },
+      "creative_guidance": "Invent new notes inspired by emotions, nature, or abstract ideas (e.g., 'Velvet Dusk Glow', 'Embered Starlight'). Blend styles for unique, boundary-pushing combinations."
+    },
+    "manufacturing": {
+      "eau_de_parfum": {
+        "fragrance_oil": "15-20%",
+        "ethanol": "70-80%",
+        "distilled_water": "5-10%",
+        "process": [
+          "Mix fragrance oils in ethanol slowly, stirring gently to blend.",
+          "Add distilled water gradually to avoid separation.",
+          "Age for 2-4 weeks in a cool (15-20°C), dark place.",
+          "Filter through a coffee filter to remove sediment.",
+          "Bottle in sterilized glass containers."
+        ],
+        "tips": {
+          "high_volatility": "For top-heavy blends, use 68% ethanol and age for 3 weeks.",
+          "woody_base": "For woody bases, increase fragrance oil to 22% and age for 4 weeks.",
+          "floral": "Add 2% rose water for floral blends to enhance softness."
+        }
+      },
+      "eau_de_toilette": {
+        "fragrance_oil": "5-15%",
+        "ethanol": "80-90%",
+        "distilled_water": "5-10%",
+        "process": [
+          "Mix oils in ethanol quickly for lighter diffusion.",
+          "Add water and stir gently.",
+          "Age for 1-2 weeks.",
+          "Filter and bottle."
+        ],
+        "tips": {
+          "citrus": "Use 85% ethanol for citrus-heavy blends to maintain freshness."
+        }
+      },
+      "creative_adjustments": "For experimental notes, test small batches (10ml). Adjust ethanol based on note intensity (e.g., smoky notes may need 65% ethanol for depth)."
+    },
+    "brands": [
+      {
+        "name": "Creed",
+        "perfumes": [
+          {
+            "name": "Aventus",
+            "notes": {
+              "top": ["Bergamot", "Pineapple"],
+              "middle": ["Patchouli", "Birch"],
+              "base": ["Ambergris", "Musk"]
+            },
+            "style": ["fresh", "woody"]
+          },
+          {
+            "name": "Bois du Portugal",
+            "notes": {
+              "top": ["Bergamot"],
+              "middle": ["Lavender"],
+              "base": ["Sandalwood", "Vetiver"]
+            },
+            "style": ["woody", "floral"]
+          }
+        ]
+      },
+      {
+        "name": "Diptyque",
+        "perfumes": [
+          {
+            "name": "Tam Dao",
+            "notes": {
+              "top": ["Rose"],
+              "middle": ["Cypress"],
+              "base": ["Sandalwood", "Cedarwood"]
+            },
+            "style": ["woody"]
+          },
+          {
+            "name": "Philosykos",
+            "notes": {
+              "top": ["Fig Leaf"],
+              "middle": ["Fig"],
+              "base": ["Cedarwood"]
+            },
+            "style": ["green", "fruity"]
+          }
+        ]
+      },
+      {
+        "name": "Jo Malone",
+        "perfumes": [
+          {
+            "name": "Peony & Blush Suede",
+            "notes": {
+              "top": ["Green Apple"],
+              "middle": ["Peony"],
+              "base": ["Suede"]
+            },
+            "style": ["floral", "fruity"]
+          },
+          {
+            "name": "Basil & Neroli",
+            "notes": {
+              "top": ["Basil"],
+              "middle": ["Neroli"],
+              "base": ["Musk"]
+            },
+            "style": ["herbal", "fresh"]
+          }
+        ]
+      },
+      {
+        "name": "Tom Ford",
+        "perfumes": [
+          {
+            "name": "Oud Wood",
+            "notes": {
+              "top": ["Cardamom"],
+              "middle": ["Patchouli"],
+              "base": ["Oud", "Sandalwood"]
+            },
+            "style": ["woody", "spicy"]
+          },
+          {
+            "name": "Tuscan Leather",
+            "notes": {
+              "top": ["Saffron"],
+              "middle": ["Jasmine"],
+              "base": ["Leather", "Amber"]
+            },
+            "style": ["smoky", "dark"]
+          }
+        ]
+      },
+      {
+        "name": "Maison Francis Kurkdjian",
+        "perfumes": [
+          {
+            "name": "Baccarat Rouge 540",
+            "notes": {
+              "top": ["Saffron"],
+              "middle": ["Jasmine"],
+              "base": ["Ambergris", "Cedarwood"]
+            },
+            "style": ["spicy", "woody"]
+          },
+          {
+            "name": "Oud Satin Mood",
+            "notes": {
+              "top": ["Rose"],
+              "middle": ["Vanilla"],
+              "base": ["Oud"]
+            },
+            "style": ["floral", "oriental"]
+          }
+        ]
+      }
+    ]
+  }
