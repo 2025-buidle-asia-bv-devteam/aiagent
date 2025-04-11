@@ -1,7 +1,7 @@
 import os
 import json
 from dotenv import load_dotenv
-from openai import OpenAI
+import openai
 
 # 환경 변수 로드
 load_dotenv()
@@ -10,7 +10,7 @@ if not api_key:
     raise EnvironmentError("OPENAI_API_KEY가 .env 파일에 설정되지 않았습니다.")
 
 # OpenAI 클라이언트 설정
-client = OpenAI(api_key=api_key)
+openai.api_key = api_key
 
 # 향수 데이터 로드
 data_path = os.path.join("knowledge", "perfume_data.json")
@@ -52,7 +52,7 @@ class PerfumeAgent:
         ] + self.history + [{"role": "user", "content": user_input}]
 
         try:
-            response = client.chat.completions.create(
+            response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",  # 또는 gpt-3.5-turbo를 테스트하세요.
                 messages=messages,
                 max_tokens=600,
