@@ -1,105 +1,149 @@
-# 조향 AI agent
+# 🌟 Eau d'Intelligence: The Master Perfumer AI Agent
 
-Eliza를 사용한 조향 Aiagent입니다.
+<div align="center">
+  <img src="https://img.shields.io/badge/Powered%20by-OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white" alt="Powered by OpenAI" />
+  <img src="https://img.shields.io/badge/Built%20with-Eliza-008080?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiwxLjVBMTAuNSwxMC41LDAsMSwwLDIyLjUsMTIsMTAuNTEsMTAuNTEsMCwwLDAsMTIsMS41Wk0yMCwxMS42M2gtM2E3Ljc2LDcuNzYsMCwwLDAtMS41MS00LjY1TDE4LDQuODRBOC40NSw4LjQ1LDAsMCwxLDIwLDExLjYzWk0xMywxMS42M1YzLjc2YTcuNzgsNy43OCwwLDAsMSw0LjM1LDMuMTksOC4zNSw4LjM1LDAsMCwxLDEuMjcsNC42OFptLTIsMFYzLjc2QTcuNzgsNy43OCwwLDAsMCw2LjY1LDYuOTVhOC4zNSw4LjM1LDAsMCwwLTEuMjcsNC42OFptLTgsMFY0LjgzYTguMzQsOC4zNCwwLDAsMSwzLjM0LDIuMTVBNy43Niw3Ljc2LDAsMCwwLDcsMTEuNjNaTTQsMTIuMzdINy4wNWE3Ljc2LDcuNzYsMCwwLDAsMS41MSw0LjY1TDYsMTkuMTdBOC40NSw4LjQ1LDAsMCwxLDQsMTIuMzdabTktLjc0djcuODdhNy43OCw3Ljc4LDAsMCwxLTQuMzUtMy4xOUE4LjM1LDguMzUsMCwwLDEsNy40MSwxMS42M1ptMiwwdjcuODdBNy43OCw3Ljc4LDAsMCwwLDE3LjM1LDE2LjMxYTguMzUsOC4zNSwwLDAsMCwxLjI3LTQuNjhabTgsLS43NFYxOS4xN2E4LjM0LDguMzQsMCwwLDEtMy4zNC0yLjE1QTcuNzYsNy43NiwwLDAsMCwxNywxMi4zN1oiLz48L3N2Zz4=" alt="Built with Eliza" />
+  <img src="https://img.shields.io/badge/Craft-Perfumery-FF69B4?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNSAyIDIgNi41IDIgMTJzNC41IDEwIDEwIDEwIDEwLTQuNSAxMC0xMFMxNy41IDIgMTIgMm0wIDE4YTggOCAwIDAgMS04LThzMyAzIDggMyA4LTMgOC0zYTggOCAwIDAgMS04IDgiLz48L3N2Zz4=" alt="Craft Perfumery" />
+</div>
 
-## 🚩 개요
+## ✨ Introduction
 
-Eliza와 향수 데이터를 사용하여 GPT API를 사용하여 사용자가 요구하는 느낌의 향수 조합법을 추천합니다.
+**Eau d'Intelligence** is an extraordinary AI Agent that combines the therapeutic conversation style of Eliza with the sophisticated intelligence of OpenAI to create a unique virtual perfumer. With the persona of a master perfumer, this agent guides you through the art and science of fragrance creation, offering personalized scent recommendations and inspiring your olfactory imagination.
 
-## 🛠 설치 및 설정
+Unlike traditional chatbots, our AI Agent understands the complex language of scents, notes, and accords. It can transform your abstract descriptions like "I want something moody and rainy" into detailed perfume formulations with precise top, middle, and base notes.
 
-1. 필요한 패키지 설치:
+## 🧪 Features
+
+- **Creative Perfume Formulation**: Receive detailed fragrance recipes with top, middle, and base notes
+- **Personalized Scent Recommendations**: Describe your mood or desired atmosphere and get tailored suggestions
+- **Manufacturing Guidance**: Learn how to blend and create your custom scents with step-by-step instructions
+- **Olfactory Education**: Expand your knowledge about fragrance families, notes, and perfumery techniques
+- **JSON-formatted Output**: Perfectly structured data for integration with other applications
+
+## 🛠️ Installation & Setup
+
+1. Install required packages:
    ```bash
    pip install -r requirements.txt
    ```
 
-2. `.env` 파일 설정:
+2. Configure environment variables in `.env` file:
    ```env
    OPENAI_API_KEY=your_openai_api_key
    
-   # Eliza 설정
-   USE_ELIZA=false  # Eliza 사용 시 true로 변경
-   ELIZA_API_URL=http://localhost:3001  # Node 서버와 포트 충돌을 피하기 위해 3001 사용
+   # Eliza configuration
+   USE_ELIZA=true
+   ELIZA_API_URL=http://localhost:3001
    ```
 
-## 🔍 Eliza 통합 설정
+## 🔍 Running Modes
 
-이 프로젝트는 세 가지 모드로 실행할 수 있습니다:
+### Direct OpenAI Mode
+- Uses OpenAI API directly for fragrance recommendations
+- Set `USE_ELIZA=false` in your `.env` file
 
-### 1. 기본 모드 (OpenAI API 직접 사용)
-- OpenAI API를 직접 호출하여 향수 추천을 생성합니다.
-- `.env` 파일에서 `USE_ELIZA=false`로 설정합니다.
+### Mock Eliza Server Mode (Recommended for Testing)
+- Uses the included mock Eliza server
+- Enables testing of the Eliza API format without setting up the actual infrastructure
 
-### 2. 모의 Eliza 서버 모드 (권장)
-- 프로젝트에 포함된 모의 Eliza 서버를 사용합니다.
-- 실제 Eliza 서버 설정 없이도 Eliza API 형식을 사용할 수 있습니다.
-
-모의 Eliza 서버 모드 활성화 순서:
-
-1. 모의 Eliza 서버 시작:
+To activate:
+1. Start the mock Eliza server:
    ```bash
    python src/mock_eliza_server.py
    ```
-
-2. 다른 터미널에서 서버 실행 상태 확인:
+2. Verify server status:
    ```bash
    python src/check_eliza.py
    ```
+3. Set `USE_ELIZA=true` in your `.env` file
 
-3. `.env` 파일에서 Eliza 활성화:
-   ```
-   USE_ELIZA=true
-   ```
+### Full Eliza Server Mode (Advanced)
+- Process requests through actual Eliza infrastructure
+- Benefits from advanced caching, enhanced logging, and additional features
+- Requires Node.js 23.3.0 and pnpm
 
-4. 향수 에이전트 실행:
-   ```bash
-   python src/main.py
-   ```
-
-### 3. 실제 Eliza 서버 모드 (고급)
-- 실제 Eliza 인프라를 통해 요청을 처리합니다.
-- 고급 기능 및 캐싱, 향상된 로깅 등의 이점이 있습니다.
-- Node.js 23.3.0 및 pnpm이 필요합니다.
-
-Eliza 서버 모드 활성화 순서:
-
-1. 필요한 도구 설치:
+To activate:
+1. Install required tools:
    ```bash
    npm install -g pnpm
    ```
-
-2. Eliza 서버 시작:
+2. Start Eliza server:
    ```bash
-   # 프로젝트 루트 디렉토리에서
+   # From project root
    PORT=3001 pnpm start
    
-   # 또는 DirectClient만 실행
+   # Or just DirectClient
    cd packages/client-direct && PORT=3001 pnpm dev
    ```
+3. Set `USE_ELIZA=true` in your `.env` file
 
-   > ⚠️ **참고**: Node 서버가 이미 3000 포트를 사용 중이므로 3001과 같은 다른 포트를 사용합니다.
+## 💫 Usage
 
-3. `.env` 파일에서 Eliza 활성화:
-   ```
-   USE_ELIZA=true
-   ```
-
-## 📝 사용 방법
-
-1. 향수 에이전트 실행:
+1. Start the perfume agent:
    ```bash
    python src/main.py
    ```
+   
+   Or run the FastAPI server:
+   ```bash
+   uvicorn api.fastapi_app:app --reload
+   ```
 
-2. 원하는 향수 스타일에 대한 설명을 입력합니다.
-   예: "스모키하고 어두운 느낌의 향수를 만들고 싶어요"
+2. Describe your desired fragrance style:
+   ```
+   "I want something smoky and mysterious with a hint of sweetness"
+   ```
 
-3. AI가 향수 조합법과 제조 가이드를 JSON 형식으로 제공합니다.
+3. Receive a detailed perfume formulation in beautiful JSON format:
+   ```json
+   {
+     "top_note": {
+       "name": "Smoked Bergamot",
+       "ratio": 20,
+       "description": "A vibrant citrus note infused with smoky undertones, creating a mysterious opening"
+     },
+     "middle_note": {
+       "name": "Dark Cherry Blossom",
+       "ratio": 30,
+       "description": "A semi-sweet floral heart with enigmatic depth and subtle fruity nuances"
+     },
+     "base_note": {
+       "name": "Amber Resin",
+       "ratio": 50,
+       "description": "A rich, warm foundation with honeyed sweetness and a lingering smoky character"
+     },
+     "manufacturing_guide": {
+       "ethanol": 75,
+       "water": 5,
+       "steps": [
+         "Blend the top and middle notes with ethanol",
+         "Add the base note and mix thoroughly",
+         "Add filtered water while stirring",
+         "Allow to mature for 3-4 weeks in a cool, dark place",
+         "Filter and bottle your creation"
+       ]
+     },
+     "description": "A captivating fragrance that balances smoky mystery with subtle sweetness, evoking the atmosphere of twilight in an ancient forest"
+   }
+   ```
 
-## 📚 구성 요소
+## 🌐 API Integration
 
-- `src/agent.py`: 핵심 에이전트 로직 (OpenAI API 및 Eliza 통합)
-- `src/mock_eliza_server.py`: 모의 Eliza API 서버
-- `src/check_eliza.py`: Eliza 서버 상태 확인 도구
-- `src/main.py`: 메인 실행 파일
-- `knowledge/perfume_data.json`: 향수 데이터 참고 자료
+Eau d'Intelligence offers a FastAPI microservice for integration with web applications and other services. Access the interactive API documentation at http://localhost:8000/docs when running the FastAPI server.
+
+## 📚 Project Structure
+
+- `src/agent.py`: Core agent logic with OpenAI and Eliza integration
+- `src/mock_eliza_server.py`: Mock Eliza API server for testing
+- `src/check_eliza.py`: Eliza server status verification tool
+- `src/main.py`: Main execution file
+- `api/fastapi_app.py`: FastAPI service for web integration
+- `knowledge/perfume_data.json`: Reference data for perfume formulations
+
+## 🪄 Experience the Art of Perfumery
+
+Unleash your creativity and explore the world of scents with Eau d'Intelligence. Whether you're a perfume enthusiast, a professional seeking inspiration, or simply curious about fragrance creation, our AI Agent will guide you on an enchanting olfactory journey.
+
+<div align="center">
+  <em>Where Artificial Intelligence meets the Art of Perfumery</em>
+</div>
