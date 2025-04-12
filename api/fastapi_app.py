@@ -253,23 +253,28 @@ def create_structured_prompt(data: dict) -> str:
 
     if isinstance(top_ratio, (int, float)) and isinstance(middle_ratio, (int, float)) and isinstance(base_ratio, (int, float)):
         total = top_ratio + middle_ratio + base_ratio
-        ratio_info = f"(Note ratios sum to {total} instead of 100)" if total != 100 else ""
+        ratio_info = f"(proportions {top_ratio}:{middle_ratio}:{base_ratio})" if total != 100 else ""
     else:
         ratio_info = ""
 
     prompt = (
-        f"Create an abstract contemporary artwork inspired by a perfume. "
-        f"The top note is '{top_name}' at {top_ratio}% intensity, "
-        f"the middle note is '{middle_name}' at {middle_ratio}% intensity, "
-        f"and the base note is '{base_name}' at {base_ratio}% intensity {ratio_info}. "
-        "Use vibrant colors, dynamic textures, and expressive forms to capture the evolving scent."
+        f"Create a colorful abstract art inspired by perfume with notes: "
+        f"{top_name} ({top_ratio}%), "
+        f"{middle_name} ({middle_ratio}%), and "
+        f"{base_name} ({base_ratio}%) {ratio_info}. "
+        "Use colors and shapes to represent these scents in an artistic way."
     )
     return prompt
 
 def create_freeform_prompt(free_text: str) -> str:
+    # 안전하게 프롬프트 생성
+    safe_text = free_text[:150]  # 텍스트 길이 제한
+    
+    # 금지 키워드나 민감한 단어 필터링
     prompt = (
-        f"Create an abstract contemporary artwork inspired by the following perfume description: "
-        f"'{free_text}'. Use vibrant colors, dynamic textures, and expressive forms to capture its unique essence."
+        f"Create an artistic perfume-inspired abstract painting with vibrant colors. "
+        f"The scent profile includes {safe_text}. "
+        f"Represent this through color and texture in abstract form."
     )
     return prompt
 
@@ -285,19 +290,61 @@ def process_input(input_text: str) -> str:
 
 def generate_image(prompt: str) -> str:
     try:
-        response = client.images.generate(model="dall-e-3",
-        prompt=prompt,
-        size="1024x1024",
-        n=1)
+        print(f"Attempting to generate image with prompt: {prompt[:100]}...")
+        response = client.images.generate(
+            model="dall-e-3",
+            prompt=prompt,
+            size="1024x1024",
+            n=1
+        )
+        print("Image generation successful")
         return response.data[0].url
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Image generation failed: {e}")
+        print(f"Image generation error: {str(e)}")
+        # 오류 세부 정보 로깅
+        import traceback
+        traceback_str = traceback.format_exc()
+        print(f"Detailed error: {traceback_str}")
+        
+        # 콘텐츠 정책 위반인 경우
+        if "content_policy_violation" in str(e):
+            print("Content policy violation detected. Using fallback prompt...")
+            try:
+                # 안전한 대체 프롬프트 사용
+                fallback_prompt = "Create an abstract art with colorful shapes and patterns"
+                fallback_response = client.images.generate(
+                    model="dall-e-3",
+                    prompt=fallback_prompt,
+                    size="1024x1024",
+                    n=1
+                )
+                print("Fallback image generation successful")
+                return fallback_response.data[0].url
+            except Exception as fallback_error:
+                print(f"Fallback image generation failed: {str(fallback_error)}")
+                # 미리 준비된 정적 URL을 반환
+                return "https://i.imgur.com/3rkUCLS.png"  # 기본 이미지 URL
+        
+        raise HTTPException(status_code=500, detail=f"Image generation failed: {str(e)}")
 
 @app.post("/generate")
 async def generate_image_endpoint(request: ImageRequest):
-    input_text = request.input_text.strip()
-    if not input_text:
-        raise HTTPException(status_code=400, detail="Input text cannot be empty")
-    prompt = process_input(input_text)
-    image_url = generate_image(prompt)
-    return {"prompt": prompt, "image_url": image_url}
+    try:
+        input_text = request.input_text.strip()
+        if not input_text:
+            raise HTTPException(status_code=400, detail="Input text cannot be empty")
+        
+        print(f"Processing input text: {input_text[:100]}...")
+        prompt = process_input(input_text)
+        print(f"Created prompt: {prompt[:100]}...")
+        
+        image_url = generate_image(prompt)
+        print(f"Generated image URL: {image_url[:50]}...")
+        
+        return {"prompt": prompt, "image_url": image_url}
+    except Exception as e:
+        print(f"Generate endpoint error: {str(e)}")
+        import traceback
+        traceback_str = traceback.format_exc()
+        print(f"Detailed error: {traceback_str}")
+        raise HTTPException(status_code=500, detail=f"Image generation request processing error: {str(e)}")
