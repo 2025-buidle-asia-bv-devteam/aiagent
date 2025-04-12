@@ -19,7 +19,7 @@ ELIZA_API_URL = os.getenv("ELIZA_API_URL", "http://localhost:3001")
 client = OpenAI(api_key=api_key)
 
 # 향수 데이터 로드
-data_path = os.path.join("knowledge", "perfume_data.json")
+data_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "knowledge", "perfume_data.json")
 try:
     with open(data_path, "r", encoding="utf-8") as f:
         perfume_data = json.load(f)
@@ -122,7 +122,7 @@ class ElizaClient:
                 return "Eliza 대화를 초기화할 수 없습니다."
         
         try:
-            # 우선 모의 서버 방식으로 시도
+            # 모의 서버 방식으로 시도
             try:
                 # 메시지 데이터 구성
                 message_data = {
@@ -173,6 +173,47 @@ class ElizaClient:
                 
         except Exception as e:
             return f"Eliza API 오류: {str(e)}"
+            
+    def process_openai_response(self, openai_response, user_input):
+        """
+        OpenAI 응답을 받아서 Eliza가 자체적으로 처리한 후 응답을 반환합니다.
+        """
+        try:
+            # Eliza가 OpenAI 응답을 분석하고 재해석하는 부분
+            eliza_prompt = f"""
+다음은 OpenAI API가 생성한 향수 조향 전문가의 답변입니다:
+
+{openai_response}
+
+이 응답을 Eliza로서 당신만의 방식으로 재구성하세요. 
+JSON 형식은 유지하되, 필요에 따라 일부 값을 수정하거나 개선할 수 있습니다.
+더 창의적인 향수 이름이나 설명을 추가하거나, 제조 가이드를 개선할 수 있습니다.
+단, 최종 응답은 반드시 유효한 JSON 형식을 유지해야 하며, 
+top_note, middle_note, base_note의 비율 합이 정확히 100이 되어야 합니다.
+
+사용자 질문: {user_input}
+"""
+            # Eliza의 자체 처리를 위한 OpenAI API 호출
+            eliza_client = OpenAI(api_key=api_key)
+            eliza_response = eliza_client.chat.completions.create(
+                model="gpt-3.5-turbo",  # Eliza 처리용으로는 gpt-3.5-turbo 사용
+                messages=[
+                    {"role": "system", "content": "당신은 Eliza라는 이름의 창의적인 향수 전문가입니다."},
+                    {"role": "user", "content": eliza_prompt}
+                ],
+                max_tokens=1000,
+                temperature=1.0,  # 더 높은 창의성
+                top_p=0.98,
+                n=1
+            )
+            
+            # Eliza가 재구성한 응답 반환
+            return eliza_response.choices[0].message.content.strip()
+                
+        except Exception as e:
+            print(f"Eliza의 OpenAI 응답 처리 오류: {str(e)}")
+            # 오류 발생 시 원래 OpenAI 응답 그대로 반환
+            return openai_response
 
 
 class PerfumeAgent:
@@ -194,38 +235,37 @@ class PerfumeAgent:
         if not user_input.strip():
             return "어떤 스타일의 향수를 원하시나요? 예: '스모키하고 어두운'"
 
-        # Eliza 인프라를 사용하는 경우
-        if ELIZA_ENABLED and self.eliza_client:
-            try:
-                # Eliza API를 통해 응답 생성
-                response = self.eliza_client.send_message(user_input, SYSTEM_PROMPT)
-                
-                # 대화 기록 업데이트
-                self.history.append({"role": "user", "content": user_input})
-                self.history.append({"role": "assistant", "content": response})
-                if len(self.history) > self.max_history:
-                    self.history = self.history[-self.max_history:]
-                
-                return response
-            except Exception as e:
-                print(f"Eliza 처리 오류: {str(e)}")
-                print("OpenAI 엔진으로 대체합니다.")
-                # Eliza 오류 시 OpenAI로 폴백
-        
-        # 기존 OpenAI 처리 (Eliza가 비활성화되었거나 오류 발생 시)
-        # 대화 메시지 구성: 시스템 프롬프트 + 대화 기록 + 현재 사용자 입력
+        # 항상 먼저 OpenAI API로 기본 응답 생성
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
         ] + self.history + [{"role": "user", "content": user_input}]
 
         try:
-            response = client.chat.completions.create(model="gpt-4-turbo",  # 또는 gpt-3.5-turbo를 테스트하세요.
-            messages=messages,
-            max_tokens=1000,
-            temperature=0.9,
-            top_p=0.95,
-            n=1)
-            reply = response.choices[0].message.content.strip()
+            # OpenAI API를 통해 기본 응답 생성
+            response = client.chat.completions.create(
+                model="gpt-4-turbo",
+                messages=messages,
+                max_tokens=1000,
+                temperature=0.9,
+                top_p=0.95,
+                n=1
+            )
+            openai_reply = response.choices[0].message.content.strip()
+            
+            # Eliza가 활성화되어 있으면 OpenAI 응답을 Eliza로 처리
+            if ELIZA_ENABLED and self.eliza_client:
+                try:
+                    # Eliza가 OpenAI 응답을 자체적으로 처리
+                    final_reply = self.eliza_client.process_openai_response(openai_reply, user_input)
+                    reply = final_reply
+                    print(f"Eliza 처리 성공: OpenAI 응답을 재해석했습니다.")
+                except Exception as e:
+                    print(f"Eliza의 OpenAI 응답 처리 중 오류: {str(e)}")
+                    # 오류 시 원래 OpenAI 응답 사용
+                    reply = openai_reply
+            else:
+                # Eliza가 비활성화된 경우 원래 OpenAI 응답 사용
+                reply = openai_reply
         except Exception as e:
             reply = f"오류 발생: {str(e)}. API 키, 네트워크 상태, 혹은 요청 구성을 확인하세요."
 

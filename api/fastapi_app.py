@@ -348,3 +348,9 @@ async def generate_image_endpoint(request: ImageRequest):
         traceback_str = traceback.format_exc()
         print(f"Detailed error: {traceback_str}")
         raise HTTPException(status_code=500, detail=f"Image generation request processing error: {str(e)}")
+
+# 서버 실행 코드 추가
+if __name__ == "__main__":
+    import uvicorn
+    print("FastAPI 서버 시작 중...")
+    uvicorn.run(app, host="0.0.0.0", port=8000)
