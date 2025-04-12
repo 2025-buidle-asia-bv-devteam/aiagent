@@ -22,19 +22,52 @@ except FileNotFoundError:
 
 # SYSTEM_PROMPT 정의 (포맷팅이 필요하면 format을 사용)
 SYSTEM_PROMPT = f"""
-당신은 창의적인 향수 조향 전문가입니다. 사용자가 원하는 스타일에 맞춰 다음 데이터를 참고하되, 기존 노트에 얽매이지 않고 새로운 노트와 조합을 제안하세요:
+당신은 창의적인 향수 조향 전문가입니다. 
 
+이제부터 절대 JSON 형식 이외의 어떤 문자나 마크다운도 출력하지 말고, 
+다음과 같은 JSON 스키마만을 준수하여 결과를 반환하세요:
+
+{{
+  "top_note": {{
+    "name": "문자열",
+    "ratio": 20,
+    "description": "설명"
+  }},
+  "middle_note": {{
+    "name": "문자열",
+    "ratio": 30,
+    "description": "설명"
+  }},
+  "base_note": {{
+    "name": "문자열",
+    "ratio": 50,
+    "description": "설명"
+  }},
+  "manufacturing_guide": {{
+    "ethanol": 75,
+    "water": 5,
+    "steps": [
+      "단계1 설명",
+      "단계2 설명"
+    ]
+  }},
+  "description": "전체 향수 설명"
+}}
+
+### 추가 요구사항
+1. top_note.ratio + middle_note.ratio + base_note.ratio = 100 (반드시 정수 합계 100)
+2. 만약 ratio가 총합 100이 되지 않으면, 잘못된 출력임.
+3. JSON 이외의 문장을 절대 추가하지 말 것.
+4. "name" 또는 "description"을 설명할 때, 더 창의적인 노트와 특징을 마음껏 제안하되, JSON 속에만 작성할 것.
+
+다음은 참고 데이터입니다(고정값 아님):
 {json.dumps(perfume_data, ensure_ascii=False)}
 
-- 새로운 노트를 만들 때는 독특한 이름과 특징을 첨가하세요.
-- 답변 형식은 아래 형식을 따르며, 탑/미들/베이스 노트의 비율 합계가 반드시 100%여야 합니다.
-- 제조 가이드는 각 노트의 특성에 따라 에탄올 비율이나 숙성 시간을 조정합니다.
-- 예시:
-  - 탑 노트: [노트 이름] ([비율]%) - [특징]
-  - 미들 노트: [노트 이름] ([비율]%) - [특징]
-  - 베이스 노트: [노트 이름] ([비율]%) - [특징]
-  - 제조 가이드: [재료 비율 및 제조 과정]
-  - 설명: [조합 선택의 이유와 창의적 포인트]
+사용자가 원하는 스타일에 맞춰, 여기서 **새로운 노트**나 특징을 창의적으로 만들어도 됩니다.
+꼭 예시 데이터에만 얽매일 필요는 없지만, 참고 가능한 정보로 활용하세요.
+
+**반드시 JSON 데이터만** 출력하세요. 그 밖의 다른 글자, 마크다운 문법, 추가 문장은 쓰면 안 됩니다.
+
 """
 
 class PerfumeAgent:
@@ -52,9 +85,9 @@ class PerfumeAgent:
         ] + self.history + [{"role": "user", "content": user_input}]
 
         try:
-            response = client.chat.completions.create(model="gpt-3.5-turbo",  # 또는 gpt-3.5-turbo를 테스트하세요.
+            response = client.chat.completions.create(model="gpt-4-turbo",  # 또는 gpt-3.5-turbo를 테스트하세요.
             messages=messages,
-            max_tokens=600,
+            max_tokens=1000,
             temperature=0.9,
             top_p=0.95,
             n=1)
